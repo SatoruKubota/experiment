@@ -17,12 +17,12 @@ warnings.filterwarnings(
 
 # CSVファイルを読み込み
 #df = pd.read_csv('cac.csv')#元データ
-df = pd.read_csv('new_data2.csv')#テスト
+df = pd.read_csv('../givnu/givnu_csv/new_data2.csv')#テスト
 
 #df = pd.read_csv('0_4999_coord.csv')#0_5000
 #df = pd.read_csv('filtered_points.csv')#コート内
 #count_df = pd.read_csv('filtered_data.csv', header=0)#人数フィルタリング
-count_df = pd.read_csv('../quvnu_csv/quvnu_data.csv', header=0)#人数フィルタリング
+count_df = pd.read_csv('../givnu/givnu_csv/givnu_data.csv', header=0)#人数フィルタリング
 
 
 
@@ -66,8 +66,8 @@ movement_data = []
 # 1行目のframeIndexの値を取得
 frame_index_value = int(df.iloc[1]['frameIndex'])
 
-for frame in range(frame_index_value, df['frameIndex'].max() - frame_window + 1, frame_window):
-#for frame in range(42000, 45000, frame_window):
+#for frame in range(frame_index_value, df['frameIndex'].max() - frame_window + 1, frame_window):
+for frame in range(12000, 12600, frame_window):
     window_data = df[(df['frameIndex'] >= frame) & (df['frameIndex'] < frame + frame_window)]
 
     if window_data.empty:
@@ -102,7 +102,7 @@ for i in range(len(movement_data)):
         if count >= 3:
             #print(f"一定値以下の値が3回以上続いた後、{value}が出現しました。続いた値: {consecutive_values}")
             #sp_values.append(consecutive_values[count-1])
-            sp_values.append((i-1)*30)
+            sp_values.append((i-1)*frame_window)
 
         # カウントと保存した値をリセット
         count = 0

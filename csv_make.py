@@ -4,25 +4,20 @@ import numpy as np
 from shapely.geometry import Point, Polygon
 
 # CSVファイルを読み込み
-df = pd.read_csv('../quvnu_csv/quvnu.csv')
+df = pd.read_csv('../givnu/givnu_csv/rslt_givnu.csv')
 
-# frameIndexの範囲を指定して抽出（例えば、frameIndexが3から6の範囲）
-start_frame = 0
-#end_frame = 4999
-end_frame = df['frameIndex'].iloc[-1]
+# 列名を変更
+df.rename(columns={"left": "x", "top": "y"}, inplace=True)
 
 # 条件に合う行を抽出
 # 新しいyの列を計算
 ###############  y座標が足になるように  ######################
 df['y'] = df['y'] + df['height']
 df['x'] = df['x'] + df['width'] / 2
-df_filtered = df[(df['frameIndex'] >= start_frame) & (df['frameIndex'] <= end_frame)]
 
 # 結果を表示
-print(df_filtered)
+print(df)
 
 # フィルタリング結果をCSVファイルに出力
-#output_path = f'{start_frame}_{end_frame}_coord.csv'
-output_path = f'../quvnu_csv/quvnu_coord.csv'
-
-df_filtered.to_csv(output_path, index=False)
+output_path = f'../givnu/givnu_csv/givnu.csv'
+df.to_csv(output_path, index=False)
