@@ -17,12 +17,12 @@ warnings.filterwarnings(
 
 # CSVファイルを読み込み
 #df = pd.read_csv('cac.csv')#元データ
-df = pd.read_csv('../givnu/givnu_csv/new_data2.csv')#テスト
+df = pd.read_csv('../givnu_csv/new_data2.csv')#テスト
 
 #df = pd.read_csv('0_4999_coord.csv')#0_5000
 #df = pd.read_csv('filtered_points.csv')#コート内
 #count_df = pd.read_csv('filtered_data.csv', header=0)#人数フィルタリング
-count_df = pd.read_csv('../givnu/givnu_csv/givnu_data.csv', header=0)#人数フィルタリング
+count_df = pd.read_csv('../givnu_csv/givnu_data.csv', header=0)#人数フィルタリング
 
 
 
@@ -66,8 +66,8 @@ movement_data = []
 # 1行目のframeIndexの値を取得
 frame_index_value = int(df.iloc[1]['frameIndex'])
 
-#for frame in range(frame_index_value, df['frameIndex'].max() - frame_window + 1, frame_window):
-for frame in range(12000, 12600, frame_window):
+for frame in range(frame_index_value, df['frameIndex'].max() - frame_window + 1, frame_window):
+#for frame in range(13000, 15000, frame_window):
     window_data = df[(df['frameIndex'] >= frame) & (df['frameIndex'] < frame + frame_window)]
 
     if window_data.empty:
@@ -92,6 +92,7 @@ pattern_count = 0
 # リストをループして処理
 for i in range(len(movement_data)):
     value = movement_data[i]
+    #print(f"データ{i}: {value}")
 
     if value <= 250:
         # 一定値以下の値の場合、カウントを増やし、値を保存
@@ -121,7 +122,7 @@ found_values = [value for value in sp_values if value in column_data]
 print(f"SP開始フレーム: {found_values}")
 
 # 結果を出力
-#print(f"sp候補: {sp_values}")
+print(f"sp候補: {sp_values}")
 
 #見つかった値: 
 #[2130, 2580, 8430, 10740, 19470, 22530, 23610, 30150, 33120, 36360, 36870, 39720, 42270, 45570]

@@ -3,7 +3,7 @@ import ast
 import matplotlib.pyplot as plt
 
 # CSVファイルの読み込み
-input_csv = "../givnu/givnu_csv/new_data2.csv"  # 入力ファイル名を指定
+input_csv = "../givnu_csv/new_data2.csv"  # 入力ファイル名を指定
 
 # CSVの読み込み
 df = pd.read_csv(input_csv)
@@ -81,7 +81,7 @@ for _, row in filtered_df.iterrows():
     plt.gca().invert_yaxis()
     plt.show()
 # CSVファイルとして保存
-filtered_df.to_csv('../givnu/givnu_csv/ck_frame.csv', index=False)
+filtered_df.to_csv('../givnu_csv/ck_frame.csv', index=False)
 
 # frameIndexの出力
 column_as_list = filtered_df["frameIndex"].tolist()

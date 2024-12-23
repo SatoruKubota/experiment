@@ -4,7 +4,7 @@ import numpy as np
 from shapely.geometry import Point, Polygon
 
 # CSVファイルを読み込み
-df = pd.read_csv('../givnu/givnu_csv/rslt_givnu.csv')
+df = pd.read_csv('../givnu_csv/rslt_givnu.csv')
 
 # 列名を変更
 df.rename(columns={"left": "x", "top": "y"}, inplace=True)
@@ -19,5 +19,5 @@ df['x'] = df['x'] + df['width'] / 2
 print(df)
 
 # フィルタリング結果をCSVファイルに出力
-output_path = f'../givnu/givnu_csv/givnu.csv'
+output_path = f'../givnu_csv/givnu.csv'
 df.to_csv(output_path, index=False)

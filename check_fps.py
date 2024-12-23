@@ -13,8 +13,8 @@ def get_video_fps(video_path):
     return fps
 
 # ファイルパスを指定
-video1_path = "../givnu/givnu_video/givnu_ori.mp4"
-video2_path = "../givnu/givnu_video/rslt_givnu.mp4"
+video1_path = "../givnu_video/givnu_ori.mp4"
+video2_path = "../givnu_video/rslt_givnu.mp4"
 
 # FPSを取得して表示
 fps1 = get_video_fps(video1_path)

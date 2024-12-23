@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # データを読み込む
-df = pd.read_csv('../givnu/givnu_csv/givnu.csv')
+df = pd.read_csv('../givnu_csv/givnu.csv')
 
 # 動画から特定のフレームを取得して描画
 def plot_frame_on_video(video_path, frame_index, data_frame):
@@ -37,13 +37,13 @@ def plot_frame_on_video(video_path, frame_index, data_frame):
     cv2.destroyAllWindows()
 
     # フレームを保存（必要に応じて）
-    output_path = f"../givnu/givnu_video/frame_{frame_index}.jpg"
+    output_path = f"../givnu_video/frame_{frame_index}.jpg"
     cv2.imwrite(output_path, frame)
     print(f"Frame {frame_index} saved as {output_path}.")
 
     cap.release()
 
 # 動画ファイルパスとフレーム番号を指定して実行
-video_path = "../givnu/givnu_video/givnu_ori.mp4"  # 動画ファイルのパスを指定
+video_path = "../givnu_video/givnu_ori.mp4"  # 動画ファイルのパスを指定
 frame_index_to_plot = 100  # 描画したいframeIndexを指定
 plot_frame_on_video(video_path, frame_index_to_plot, df)
