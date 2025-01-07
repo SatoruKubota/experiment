@@ -14,6 +14,7 @@ def get_video_fps(video_path):
 
 # ファイルパスを指定
 video1_path = "../givnu_video/givnu_ori.mp4"
+#video1_path = r"C:\Users\くぼたさとる\futsal\m2\SP_classification\quvnu\quvnu_video\CAC_tracking.mp4"
 video2_path = "../givnu_video/rslt_givnu.mp4"
 
 # FPSを取得して表示

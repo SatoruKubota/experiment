@@ -6,9 +6,9 @@ import pandas as pd
 #df = pd.read_csv('cac_test.csv')
 #df = pd.read_csv('filtered_data.csv')
 #df = pd.read_csv('0_4999_coord.csv')
-df = pd.read_csv('../givnu/givnu_csv/givnu.csv')#テスト
+df = pd.read_csv('../givnu_csv/givnu.csv')#テスト
+#fps_correct = 29.97002997002997 / 30
 fps_correct = 1
-
 
 def show_frame(video_path, frame_numbers):
     # 動画ファイルを読み込み
@@ -25,7 +25,7 @@ def show_frame(video_path, frame_numbers):
     for frame_num in frame_numbers:
         
         # 指定したフレームに移動
-        cap.set(cv2.CAP_PROP_POS_FRAMES, frame_num*fps_correct) # ビデオは試合動画のfpsに合わせる
+        cap.set(cv2.CAP_PROP_POS_FRAMES, int(frame_num*fps_correct)) # ビデオは試合動画のfpsに合わせる
         
         # フレームを取得
         ret, frame = cap.read()
@@ -67,13 +67,13 @@ def show_frame(video_path, frame_numbers):
 #frame_numbers = [2100, 2550, 8400, 10710, 19440, 22500, 23580, 30120, 33090, 36330, 36840, 39690, 42240, 45540]
 
 # テスト用(CKシーンのみ)
-frame_numbers = [780, 2430, 3600, 9210, 11100, 11280, 12000, 13560, 14010, 21030, 24630, 27870, 30180, 34440, 43140, 47970, 58260, 61230, 64080, 64800, 65460, 67350, 67650, 67950]
+frame_numbers = [13560]
 # frame_numbers = [2550, 8440, 10710, 19440, 23580, 36840]
 
 test_frame = [int(x * fps_correct) for x in frame_numbers]
 print(test_frame)
 
-video_path_ori = '../givnu/givnu_video/givnu_ori.mp4'
+video_path_ori = '../givnu_video/rslt_givnu.mp4'
 #show_frame(video_path, frame_number)
 
 show_frame(video_path_ori, frame_numbers)# 表示したいのは試合動画のフレームに合わせたもの
